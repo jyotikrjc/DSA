@@ -1,34 +1,40 @@
-//DFS
+//BFS
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
 const ll N=1000007;
 vector<int> adj[N];
 bool visited[N]={false};
-void dfs(int s) {
-    visited[s] = true;
-    cout<<s<<" ";
-    for(int i = 0;i < adj[s].size();++i)    {
-        if(visited[adj[s][i]] == false)
-            dfs(adj[s][i]);
+queue<int> q;
+int distanc[N];
+int x;
+void bfs(int s) {
+    visited[x] = true;
+    distanc[x] = 0;
+    q.push(x);
+    while (!q.empty()) {
+        int s = q.front(); q.pop();
+        cout<<s<<" ";
+        for (auto u : adj[s]) {
+            if (visited[u]) continue;
+            visited[u] = true;
+            distanc[u] = distanc[s]+1;
+            q.push(u);
+        }
     }
 }
 
 int main() {
-    int nodes, edges, x, y, connectedComponents = 0;
+    int nodes, edges, m, n, connectedComponents = 0;
     cin >> nodes;                       //Number of nodes
     cin >> edges;                       //Number of edges
     for(int i = 0;i < edges;++i) {
-        cin >> x >> y;
+        cin >> m >> n;
         //Undirected Graph
-        adj[x].push_back(y);                   //Edge from vertex x to vertex y
-        adj[y].push_back(x);                   //Edge from vertex y to vertex x
+        adj[m].push_back(n);                   //Edge from vertex x to vertex y
+        adj[n].push_back(m);                   //Edge from vertex y to vertex x
     }//Initialize all nodes as not visited
-
-    for(int i = 1;i <= nodes;++i) {
-        if(visited[i] == false)     {
-            dfs(i);
-        }
-    }
+    cin>>x;
+    bfs(x);
     return 0;
 }
