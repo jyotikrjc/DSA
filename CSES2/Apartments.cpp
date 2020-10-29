@@ -38,6 +38,6 @@ int main()
             j++;
         }
     }
-    cout << ans;
+    cout <<ans;
     return 0;
 }
