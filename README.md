@@ -1,2 +1,1 @@
-# Codeforces
-Codeforces algorithms cheatsheet
+Data Structure and Algorithms
