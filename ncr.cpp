@@ -15,7 +15,7 @@ ll power(ll x, ll n, ll m=mod){
     return (res%m);
 }
 
-int ncr(int n,int r)
+ll ncr(ll n,ll r)
 {
     return fac[n]*((power(fac[n-r], mod-2)*power(fac[r], mod-2))%mod)%mod;
 }
